@@ -155,9 +155,9 @@ class Puppet::Provider::UfwRule::UfwRule < Puppet::ResourceApi::SimpleProvider
   end
 
   def create(context, name, should)
-    context.notice("Creating '#{name}' with #{should.inspect} (params: '#{params}')")
     rule = @default_rule_hash.merge(should)
     params = rule_to_ufw_params(rule)
+    context.notice("Creating '#{name}' with #{should.inspect} (params: '#{params}')")
 
     Puppet::Util::Execution.execute("/usr/sbin/ufw #{params}", failonfail: true)
   end
