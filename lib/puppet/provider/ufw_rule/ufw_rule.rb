@@ -114,6 +114,8 @@ class Puppet::Provider::UfwRule::UfwRule < Puppet::ResourceApi::SimpleProvider
                         "from #{from_addr} port #{rule[:from_ports_app]}"
                       when %r{!\w+$}
                         "from #{from_addr} app #{rule[:from_ports_app]}"
+                      else
+                        "from #{from_addr}"
                       end
 
     to_addr = rule[:to_addr].nil? ? 'any' : rule[:to_addr]
