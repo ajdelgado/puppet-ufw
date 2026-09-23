@@ -125,6 +125,8 @@ class Puppet::Provider::UfwRule::UfwRule < Puppet::ResourceApi::SimpleProvider
                       "to #{to_addr} port #{rule[:to_ports_app]}"
                     when %r{!\w+$}
                       "to #{to_addr} app #{rule[:to_ports_app]}"
+                    else
+                      "to #{to_addr}"
                     end
 
     uses_app_name = "#{from_definition} #{to_definition}".include? ' app '
